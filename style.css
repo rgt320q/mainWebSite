@@ -218,7 +218,7 @@ input:checked + .slider:before {
     flex-direction: column; /* İçerikleri dikey hizalamak için */
     align-items: center;
     justify-content: center;
-    min-height: 90vh; /* Tam ekran yüksekliği */
+    /*min-height: 90vh; /* Tam ekran yüksekliği */
     margin-top: 0; /* Header yüksekliği kadar boşluk kaldırıldı, padding ile ayarlanacak */
     overflow: hidden; /* Animasyonlar için */
     position: relative;

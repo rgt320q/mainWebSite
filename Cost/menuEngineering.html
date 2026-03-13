@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menü Mühendisliği: Stratejik Analiz ve Uygulama</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --muted: #9ca3af;
+      --text: #f8fafc;
+      --accent: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --info: #60a5fa;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    a { color: var(--info); text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header { padding: 16px 0 8px; }
+    h1 { font-size: 28px; margin: 0 0 6px; }
+    h2 { font-size: 22px; margin: 24px 0 10px; }
+    p { color: var(--muted); line-height: 1.6; margin: 8px 0 12px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 980px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+    .card { background: linear-gradient(180deg, #0b1220, #0e1627 20%, var(--card)); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+    .badge { display: inline-block; font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+    .muted { color: var(--muted); }
+
+    .form-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 8px; margin-top: 12px; }
+    .form-row input { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); }
+    .btn { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); cursor: pointer; }
+    .btn-primary { background: var(--info); border-color: #3b82f6; color: #0b1220; font-weight: 600; }
+    .btn-ghost { background: transparent; color: var(--muted); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+    th { color: #cbd5e1; font-weight: 600; }
+    tbody tr:hover { background: #0b1220; }
+
+    .k-star { color: var(--accent); font-weight: 700; }
+    .k-cash { color: #34d399; font-weight: 700; }
+    .k-puzzle { color: var(--warn); font-weight: 700; }
+    .k-dog { color: var(--danger); font-weight: 700; }
+
+    .stat { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stat .box { background: #0b1220; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+    .box h4 { margin: 0 0 6px; font-size: 14px; color: #cbd5e1; }
+    .box .value { font-size: 16px; font-weight: 600; }
+
+    .tip { font-size: 13px; color: var(--muted); border-left: 2px solid var(--info); padding-left: 10px; margin-top: 8px; }
+    .footer { margin-top: 24px; font-size: 12px; color: var(--muted); }
+    .code { background: #0b1220; border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; overflow: auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Menü Mühendisliği: Stratejik Analiz ve Uygulama</h1>
+      <span class="badge">Yiyecek-içecek | Kârlılık | Popülerlik | Operasyon</span>
+      <p>Menü mühendisliği, yiyecek-içecek işletmelerinde ürünlerin kârlılık ve satış performansına göre değerlendirilmesini sağlayan analitik bir yöntemdir. Bu yaklaşım, işletmenin gelirini optimize ederken müşteri deneyimini geliştirmeyi ve operasyonel verimliliği artırmayı hedefler.</p>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Temel çerçeve</h2>
+        <p><strong>Brüt kâr</strong> = Satış fiyatı − Maliyet. <strong>Toplam kâr</strong> = Brüt kâr × Satış adedi. Ürünler ortalama kâr ve satış adedi değerlerine göre dört kategoriye ayrılır: <strong>Yıldız</strong> (yüksek kâr, yüksek satış hacmi), <strong>Cash Cow</strong> (yüksek kâr, düşük satış hacmi), <strong>Puzzle</strong> (düşük kâr, yüksek satış hacmi), <strong>Dog</strong> (düşük kâr, düşük satış hacmi).</p>
+        <p>Bu sınıflandırma, menüde hangi ürünlerin öne çıkarılması, optimize edilmesi veya çıkarılması gerektiğini netleştirir.</p>
+        <div class="stat">
+          <div class="box">
+            <h4>Hedef</h4>
+            <div class="value">Geliri optimize etmek ve operasyonu dengelemek</div>
+          </div>
+          <div class="box">
+            <h4>Kritik nokta</h4>
+            <div class="value">Reçete doğruluğu ve porsiyon kontrolü</div>
+          </div>
+        </div>
+        <p class="tip">İşgücü süresi ve hazırlık karmaşıklığını ekleyerek modeli genişletin (dk/ürün, istasyon yükü, fire oranı).</p>
+      </section>
+
+      <section class="card">
+        <h2>Ürün ekle ve analiz et</h2>
+
+        <div class="form-row">
+          <input id="ad" placeholder="Ürün adı (örn. Izgara Somon)" />
+          <input id="fiyat" type="number" step="0.01" placeholder="Satış fiyatı (₺)" />
+          <input id="maliyet" type="number" step="0.01" placeholder="Maliyet (₺)" />
+          <input id="adet" type="number" step="1" placeholder="Satış adedi" />
+          <button class="btn btn-primary" id="ekle">Ekle</button>
+        </div>
+        <p class="tip">En az 3–5 ürün ekleyerek ortalamaları oluşturun. Ürünleri dilediğinizde düzenleyebilir veya silebilirsiniz.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Ürün</th>
+              <th>Fiyat (₺)</th>
+              <th>Maliyet (₺)</th>
+              <th>Brüt kâr (₺)</th>
+              <th>Adet</th>
+              <th>Toplam kâr (₺)</th>
+              <th>Kategori</th>
+              <th>İşlem</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+          <tfoot>
+            <tr>
+              <th>Ortalama</th>
+              <td id="avgFiyat" class="muted"></td>
+              <td id="avgMaliyet" class="muted"></td>
+              <td id="avgKar" class="muted"></td>
+              <td id="avgAdet" class="muted"></td>
+              <td id="sumToplamKar" class="muted"></td>
+              <td colspan="2"></td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div style="margin-top: 10px; display:flex; gap:8px;">
+          <button class="btn" id="ornekDoldur">Örnek verileri yükle</button>
+          <button class="btn btn-ghost" id="temizle">Tabloyu temizle</button>
+          <button class="btn" id="indir">CSV indir</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>Kategoriye göre stratejik öneriler</h2>
+      <ul>
+        <li><strong>Yıldız:</strong> Menüde görsel ve konumla öne çıkarın, servis ekibine öneri cümleleri sağlayın, stok sürekliliğini güvenceye alın.</li>
+        <li><strong>Cash Cow:</strong> Satış hacmini artırmak için promosyonlar, set menüler ve çapraz satış uygulayın; görünürlüğü güçlendirin.</li>
+        <li><strong>Puzzle:</strong> Fiyat/gramaj optimizasyonu yapın, reçeteyi sadeleştirin, tedarik ve porsiyon kontrolüyle kârlılığı yükseltin.</li>
+        <li><strong>Dog:</strong> Menüden çıkarın veya yeniden konumlandırın; operasyonel yükü azaltın.</li>
+      </ul>
+      <p class="tip">Sezonluk değişimler için periyodik analiz yapın: haftalık (yoğun dönem), aylık (standart), sezon başı/sonu (menü revizyonu).</p>
+    </section>
+
+    <section class="card">
+      <h2>İleri seviye analiz</h2>
+      <p>Menü mühendisliği yalnızca finansal verilerle sınırlı değildir. Hazırlama süresi, istasyon yükü ve fire oranı gibi operasyonel faktörler eklenerek daha kapsamlı bir model oluşturulabilir. Bu sayede yüksek kârlı ancak mutfakta darboğaz yaratan ürünler tespit edilerek süreçler optimize edilir.</p>
+      <div class="code">
+        // Model genişletme önerisi:
+        // katkı_kârı = (fiyat - maliyet)
+        // dk_başına_kâr = katkı_kârı / hazırlama_dk
+        // istasyon_yükü = hazırlama_dk × istasyon_sayısı
+        // Tercih: yüksek dk_başına_kâr + düşük istasyon_yükü.
+      </div>
+    </section>
+
+    <div class="footer">
+      Hazırlayan: Danışmanlık amaçlı örnek uygulama. Veriler temsilidir; kararlar için POS/ERP satış ve reçete kayıtlarını kullanınız.
+    </div>
+  </div>
+
+  <script>
+    const tbody = document.getElementById('tbody');
+    const inputs = {
+      ad: document.getElementById('ad'),
+      fiyat: document.getElementById('fiyat'),
+      maliyet: document.getElementById('maliyet'),
+      adet: document.getElementById('adet')
+    };
+    const buttons = {
+      ekle: document.getElementById('ekle'),
+      temizle: document.getElementById('temizle'),
+      ornek: document.getElementById('ornekDoldur'),
+      indir: document.getElementById('indir')
+    };
+
+    let data = [];
+
+    function fmt(n) {
+      if (n === null || n === undefined || isNaN(n)) return '';
+      return Number(n).toLocaleString('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+
+    function kategoriBelirle(kar, adet, avgKar, avgAdet) {
+      const yuksekKar = kar >= avgKar;
+      const yuksekAdet = adet >= avgAdet;
+      if (yuksekKar && yuksekAdet) return { label: 'Yıldız', cls: 'k-star' };
+      if (yuksekKar && !yuksekAdet) return { label: 'Cash Cow', cls: 'k-cash' };
+      if (!yuksekKar && yuksekAdet) return { label: 'Puzzle', cls: 'k-puzzle' };
+      return { label: 'Dog', cls: 'k-dog' };
+    }
+
+    function hesapla() {
+      const karlar = data.map(d => d.kar);
+      const adetler = data.map(d => d.adet);
+      const avgKar = karlar.length ? karlar.reduce((a,b)=>a+b,0) / karlar.length : 0;
+      const avgAdet = adetler.length ? adetler.reduce((a,b)=>a+b,0) / adetler.length : 0;
+
+      tbody.innerHTML = '';
+      let sumToplamKar = 0, sumFiyat = 0, sumMaliyet = 0, sumAdet = 0;
+
+      data.forEach((d, idx) => {
+        const kat = kategoriBelirle(d.kar, d.adet, avgKar, avgAdet);
+        sumToplamKar += d.toplamKar; sumFiyat += d.fiyat; sumMaliyet += d.maliyet; sumAdet += d.adet;
+
+        const tr = document.createElement('tr');
+
+        function mkInput(value, type, onChange) {
+          const input = document.createElement('input');
+          input.type = type;
+          input.value = value;
+          input.className = 'btn';
+          input.style.width = '100%';
+          input.style.background = '#0b1220';
+          input.style.border = '1px solid var(--border)';
+          input.style.borderRadius = '8px';
+          input.onchange = (e) => onChange(e.target.value);
+          return input;
+        }
+
+        const tdAd = document.createElement('td');
+        tdAd.appendChild(mkInput(d.ad, 'text', (val) => { d.ad = val; }));
+
+        const tdFiyat = document.createElement('td');
+        tdFiyat.appendChild(mkInput(d.fiyat, 'number', (val) => { d.fiyat = parseFloat(val)||0; recalc(d); hesapla(); }));
+
+        const tdMaliyet = document.createElement('td');
+        tdMaliyet.appendChild(mkInput(d.maliyet, 'number', (val) => { d.maliyet = parseFloat(val)||0; recalc(d); hesapla(); }));
+
+        const tdKar = document.createElement('td');
+        tdKar.textContent = fmt(d.kar);
+
+        const tdAdet = document.createElement('td');
+        tdAdet.appendChild(mkInput(d.adet, 'number', (val) => { d.adet = parseFloat(val)||0; recalc(d); hesapla(); }));
+
+        const tdToplamKar = document.createElement('td');
+        tdToplamKar.textContent = fmt(d.toplamKar);
+
+        const tdKat = document.createElement('td');
+        tdKat.textContent = kat.label;
+        tdKat.className = kat.cls;
+
+        const tdIslem = document.createElement('td');
+        const btnSil = document.createElement('button');
+        btnSil.textContent = 'Sil';
+        btnSil.className = 'btn';
+        btnSil.onclick = () => { data.splice(idx,1); hesapla(); };
+        tdIslem.appendChild(btnSil);
+
+        tr.append(tdAd, tdFiyat, tdMaliyet, tdKar, tdAdet, tdToplamKar, tdKat, tdIslem);
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('avgFiyat').textContent = data.length ? fmt(sumFiyat / data.length) : '';
+      document.getElementById('avgMaliyet').textContent = data.length ? fmt(sumMaliyet / data.length) : '';
+      document.getElementById('avgKar').textContent = data.length ? fmt(data.reduce((a,b)=>a + b.kar, 0) / data.length) : '';
+      document.getElementById('avgAdet').textContent = data.length ? fmt(sumAdet / data.length) : '';
+      document.getElementById('sumToplamKar').textContent = fmt(sumToplamKar);
+    }
+
+    function recalc(d) {
+      d.kar = (d.fiyat || 0) - (d.maliyet || 0);
+      d.toplamKar = d.kar * (d.adet || 0);
+    }
+
+    buttons.ekle.onclick = () => {
+      const ad = inputs.ad.value.trim();
+      const fiyat = parseFloat(inputs.fiyat.value);
+      const maliyet = parseFloat(inputs.maliyet.value);
+      const adet = parseFloat(inputs.adet.value);
+
+      if (!ad || isNaN(fiyat) || isNaN(maliyet) || isNaN(adet)) {
+        alert('Lütfen tüm alanları geçerli değerlerle doldurunuz.');
+        return;
+      }
+      const item = { ad, fiyat, maliyet, adet };
+      recalc(item);
+      data.push(item);
+      inputs.ad.value = ''; inputs.fiyat.value = ''; inputs.maliyet.value = ''; inputs.adet.value = '';
+      hesapla();
+    };
+
+    buttons.temizle.onclick = () => { data = []; hesapla(); };
+
+    buttons.ornek.onclick = () => {
+      data = [
+        { ad: 'Izgara Somon', fiyat: 180, maliyet: 95, adet: 120 },
+        { ad: 'Cheeseburger', fiyat: 95, maliyet: 55, adet: 300 },
+        { ad: 'Tiramisu', fiyat: 120, maliyet: 50, adet: 80 },
+        { ad: 'Mercimek Çorbası', fiyat: 60, maliyet: 35, adet: 250 },
+        { ad: 'Dana Steak', fiyat: 200, maliyet: 110, adet: 40 },
+        { ad: 'Tavuk Wrap', fiyat: 75, maliyet: 55, adet: 30 }
+      ];
+      data.forEach(recalc);
+      hesapla();
+    };
+
+    buttons.indir.onclick = () => {
+      if (!data.length) { alert('İndirilecek veri yok. Lütfen önce ürün ekleyiniz.'); return; }
+      const header = ['Ürün','Fiyat','Maliyet','BrütKâr','Adet','ToplamKâr','Kategori'];
+      const avgKar = data.reduce((a,b)=>a+b.kar,0)/data.length;
+      const avgAdet = data.reduce((a,b)=>a+b.adet,0)/data.length;
+
+      const lines = [header.join(';')];
+      data.forEach(d => {
+        const kat = kategoriBelirle(d.kar, d.adet, avgKar, avgAdet).label;
+        lines.push([d.ad, d.fiyat, d.maliyet, d.kar, d.adet, d.toplamKar, kat].join(';'));
+      });
+      const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'menu-analiz.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    hesapla();
+  </script>
+</body>
+</html>

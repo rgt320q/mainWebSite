@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restoranlar için stok yönetimi — Temel prensipler ve pratik araçlar</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --muted: #9ca3af;
+      --text: #f8fafc;
+      --accent: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --info: #60a5fa;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    a { color: var(--info); text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header { padding: 16px 0 8px; }
+    h1 { font-size: 28px; margin: 0 0 6px; }
+    h2 { font-size: 22px; margin: 24px 0 10px; }
+    h3 { font-size: 18px; margin: 18px 0 8px; color: #cbd5e1; }
+    p { color: var(--muted); line-height: 1.6; margin: 8px 0 12px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 980px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .card { background: linear-gradient(180deg, #0b1220, #0e1627 20%, var(--card)); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+    .badge { display: inline-block; font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+    .muted { color: var(--muted); }
+    .list { margin: 8px 0 12px; padding-left: 18px; color: var(--muted); }
+    .list li { margin: 6px 0; }
+    .tip { font-size: 13px; color: var(--muted); border-left: 2px solid var(--info); padding-left: 10px; margin-top: 8px; }
+    .footer { margin-top: 24px; font-size: 12px; color: var(--muted); }
+    .code { background: #0b1220; border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; overflow: auto; }
+    .kpi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .kpi .box { background: #0b1220; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+    .box h4 { margin: 0 0 6px; font-size: 14px; color: #cbd5e1; }
+    .box .value { font-size: 16px; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+    th { color: #cbd5e1; font-weight: 600; }
+    tbody tr:hover { background: #0b1220; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .form-row input, .form-row select { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); }
+    .btn { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: #0b1220; color: var(--text); cursor: pointer; }
+    .btn-primary { background: var(--info); border-color: #3b82f6; color: #0b1220; font-weight: 600; }
+    .btn-ghost { background: transparent; color: var(--muted); }
+    .row-actions { display:flex; gap:8px; margin-top:8px; }
+    .ok { color: var(--accent); font-weight: 600; }
+    .warn { color: var(--warn); font-weight: 600; }
+    .danger { color: var(--danger); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Restoranlar için stok yönetimi</h1>
+      <span class="badge">Satın alma | Reçete | FIFO/FEFO | Sayım | Uyumlaştırma</span>
+      <p>Stok yönetimi, ham madde ve sarf malzemelerin doğru miktarda, doğru zamanda ve doğru maliyetle tedarik edilmesini sağlar. Amaç, maliyetleri kontrol ederken menü sürekliliğini ve operasyonel verimliliği korumaktır.</p>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Temel prensipler</h2>
+        <ul class="list">
+          <li><strong>Reçete doğruluğu:</strong> Ürün reçeteleri gramaj ve fire oranlarıyla eksiksiz tanımlanmalı.</li>
+          <li><strong>FIFO/FEFO:</strong> İlk giren ilk çıkar; son kullanma tarihi kritik olanlarda FEFO (Expiry) uygulanmalı.</li>
+          <li><strong>PAR seviyeleri:</strong> Her kalem için minimum–maksimum stok aralığı belirlenmeli.</li>
+          <li><strong>Lot ve raf izleme:</strong> Soğuk depo, kuru depo ve bar için ayrı raf düzeni ve etiketleme.</li>
+          <li><strong>Periyodik sayım:</strong> Haftalık (kritik kalemler) ve aylık (genel) stok sayımı ile doğrulama.</li>
+        </ul>
+        <p class="tip">Taze ürünlerde günlük tüketim ve teslim saatlerine göre PAR seviyelerini dinamik tutun (örn. hafta sonu pik saatleri).</p>
+      </section>
+
+      <section class="card">
+        <h2>Operasyon akışı</h2>
+        <ol class="list">
+          <li><strong>Talep ve satın alma:</strong> PAR’a göre sipariş önerisi, tedarikçi fiyat ve teslim kontrolü.</li>
+          <li><strong>Teslim ve kabul:</strong> Ağırlık/adet kontrolü, sıcaklık ve SKT doğrulaması, irsaliye–fatura eşleşmesi.</li>
+          <li><strong>Depolama:</strong> Sıcaklık zonları, raf rotasyonu, lot–etiket, kontaminasyon önleme.</li>
+          <li><strong>Tüketim ve kayıt:</strong> Reçete üzerinden otomatik düşüm (POS/ERP entegrasyonu) ve el terminali/çekme fişi.</li>
+          <li><strong>Sayım ve uzlaştırma:</strong> Fiziki sayım + sistem karşılaştırma, fark analizi ve düzeltme fişleri.</li>
+        </ol>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Stok metrikleri ve formüller</h2>
+      <div class="kpi">
+        <div class="box">
+          <h4>Stok devir hızı</h4>
+          <div class="value">Satılan malın maliyeti / Ortalama stok</div>
+        </div>
+        <div class="box">
+          <h4>Günlük ortalama tüketim</h4>
+          <div class="value">Dönem tüketimi / Dönem gün sayısı</div>
+        </div>
+        <div class="box">
+          <h4>Emniyet stoğu</h4>
+          <div class="value">Talep sapması × Temin süresi sapması (basitleştirilmiş)</div>
+        </div>
+        <div class="box">
+          <h4>Yeniden sipariş noktası (ROP)</h4>
+          <div class="value">Günlük tüketim × Temin süresi + Emniyet stoğu</div>
+        </div>
+      </div>
+      <p class="tip">Tedarikçi temin süresi değişkense, ROP’u pik dönem tüketimiyle test edip emniyet stoğunu güncelleyin.</p>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h2>ABC analizi (önceliklendirme)</h2>
+        <p>Kalemleri yıllık tüketim tutarına göre sınıflandırın:</p>
+        <ul class="list">
+          <li><strong>A sınıfı:</strong> Toplam maliyetin %70–80’ini oluşturan ilk %10–20 kalem. Sık izleme.</li>
+          <li><strong>B sınıfı:</strong> Orta katkı; haftalık kontrol ve ay sonu detay analizi.</li>
+          <li><strong>C sınıfı:</strong> Düşük katkı; basit PAR ve aylık gözden geçirme yeterli.</li>
+        </ul>
+        <p class="tip">A sınıfı kalemlerde sözleşmeli fiyat, alternatif tedarik ve kalite standartlarını sıkı tutun.</p>
+      </section>
+
+      <section class="card">
+        <h2>FIFO/FEFO uygulama notları</h2>
+        <ul class="list">
+          <li><strong>Etiket:</strong> Teslim tarihi, SKT ve lot bilgisi kutu/raf üzerinde görünür olmalı.</li>
+          <li><strong>Raf rotasyonu:</strong> Yeni ürünler arkaya, eski lotlar öne yerleştirilmeli.</li>
+          <li><strong>Sıcaklık:</strong> Soğuk zincir kırılmasını önlemek için teslim–depo geçişinde maksimum 15 dk hedefleyin.</li>
+          <li><strong>Tutarsızlık yönetimi:</strong> SKT yaklaşan ürünler için kampanya/özel reçete planı.</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Sayım ve fark analizi</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Kalem</th>
+            <th>Birim</th>
+            <th>Sistem stok</th>
+            <th>Fiziki stok</th>
+            <th>Fark</th>
+            <th>Durum</th>
+          </tr>
+        </thead>
+        <tbody id="sayimBody">
+          <tr>
+            <td>Tavuk Göğüs</td><td>kg</td><td>42</td><td contenteditable="true">40</td><td>-2</td><td class="warn">İsraf/yanlış düşüm</td>
+          </tr>
+          <tr>
+            <td>Patates</td><td>kg</td><td>100</td><td contenteditable="true">105</td><td>+5</td><td class="ok">Yeni teslim</td>
+          </tr>
+          <tr>
+            <td>Kaşar Peyniri</td><td>kg</td><td>18</td><td contenteditable="true">15</td><td>-3</td><td class="danger">Fire/bozulma riski</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row-actions">
+        <button class="btn" id="yenidenHesapla">Farkları hesapla</button>
+        <button class="btn btn-ghost" id="temizleSayim">Tabloyu temizle</button>
+      </div>
+      <p class="tip">Fark nedenlerini sınıflandırın: reçete hatası, porsiyon sapması, yanlış giriş, tedarik farkı, fire/bozulma.</p>
+    </section>
+
+    <section class="card">
+      <h2>Yeniden sipariş noktası (ROP) hesaplayıcı</h2>
+      <div class="form-row">
+        <input id="gunlukTuketim" type="number" step="0.01" placeholder="Günlük tüketim (örn. 12 kg)" />
+        <input id="teminSuresi" type="number" step="0.1" placeholder="Temin süresi (gün, örn. 2)" />
+        <input id="emniyetStogu" type="number" step="0.01" placeholder="Emniyet stoğu (örn. 8 kg)" />
+        <button class="btn btn-primary" id="hesaplaROP">ROP Hesapla</button>
+      </div>
+      <p id="ropSonuc" class="tip">Formülü kullanın: ROP = Günlük tüketim × Temin süresi + Emniyet stoğu</p>
+      <div class="row-actions">
+        <button class="btn" id="ornekROP">Örnek verileri yükle</button>
+        <button class="btn btn-ghost" id="sifirlaROP">Sıfırla</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>POS/ERP entegrasyonu için öneriler</h2>
+      <ul class="list">
+        <li><strong>Reçete–POS linki:</strong> Satış anında stok otomatik düşüm; menü değişiminde versiyon takibi.</li>
+        <li><strong>Satın alma modülü:</strong> PAR/ROP’a göre sipariş önerisi ve onay akışı.</li>
+        <li><strong>Kalite ve SKT kayıtları:</strong> Teslim kontrolde sıcaklık–SKT verisi; uyarı ve bloke akışı.</li>
+        <li><strong>Sayım entegrasyonu:</strong> El terminali/QR ile sayım; fark listesi ve hızla düzeltme fişleri.</li>
+        <li><strong>Raporlama:</strong> Devir hızı, fire oranı, kategori bazında tüketim ve menü katkı analizleri.</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      Hazırlayan: Restoran stok yönetimi için danışmanlık amaçlı örnek sayfa. Kararlar için gerçek POS/ERP, satın alma ve reçete verilerini kullanınız.
+    </div>
+  </div>
+
+  <script>
+    // Sayım farklarını yeniden hesapla
+    document.getElementById('yenidenHesapla').onclick = () => {
+      const rows = document.querySelectorAll('#sayimBody tr');
+      rows.forEach(row => {
+        const sys = parseFloat(row.children[2].textContent) || 0;
+        const fiz = parseFloat(row.children[3].textContent) || 0;
+        const farkCell = row.children[4];
+        const durumCell = row.children[5];
+        const fark = +(fiz - sys).toFixed(2);
+        farkCell.textContent = fark;
+        if (fark === 0) { durumCell.textContent = 'Uyumlu'; durumCell.className = 'ok'; }
+        else if (fark > 0) { durumCell.textContent = 'Yeni teslim/yanlış giriş'; durumCell.className = 'ok'; }
+        else if (fark < -2) { durumCell.textContent = 'Fire/bozulma/kaçak'; durumCell.className = 'danger'; }
+        else { durumCell.textContent = 'Porsiyon/yanlış düşüm'; durumCell.className = 'warn'; }
+      });
+    };
+
+    document.getElementById('temizleSayim').onclick = () => {
+      document.getElementById('sayimBody').innerHTML = '';
+    };
+
+    // ROP hesaplayıcı
+    const gT = document.getElementById('gunlukTuketim');
+    const tS = document.getElementById('teminSuresi');
+    const eS = document.getElementById('emniyetStogu');
+    const ropOut = document.getElementById('ropSonuc');
+
+    function fmt(n) {
+      if (n === null || n === undefined || isNaN(n)) return '';
+      return Number(n).toLocaleString('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+
+    document.getElementById('hesaplaROP').onclick = () => {
+      const gunluk = parseFloat(gT.value);
+      const lead = parseFloat(tS.value);
+      const safety = parseFloat(eS.value);
+      if (isNaN(gunluk) || isNaN(lead) || isNaN(safety)) {
+        ropOut.textContent = 'Lütfen tüm alanları geçerli değerlerle doldurun.';
+        return;
+      }
+      const rop = gunluk * lead + safety;
+      ropOut.textContent = `Gerekli yeniden sipariş noktası (ROP): ${fmt(rop)} birim`;
+    };
+
+    document.getElementById('ornekROP').onclick = () => {
+      gT.value = 12; tS.value = 2; eS.value = 8;
+      document.getElementById('hesaplaROP').click();
+    };
+
+    document.getElementById('sifirlaROP').onclick = () => {
+      gT.value = ''; tS.value = ''; eS.value = '';
+      ropOut.textContent = 'Formülü kullanın: ROP = Günlük tüketim × Temin süresi + Emniyet stoğu';
+    };
+  </script>
+</body>
+</html>

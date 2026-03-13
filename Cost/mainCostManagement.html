@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restoranlarda Cost Yönetimi — Teknik Belge ve En İyi Uygulamalar</title>
+  <style>
+    :root {
+      --bg: #0f172a; --card: #111827; --muted: #9ca3af; --text: #f8fafc;
+      --accent: #22c55e; --warn: #f59e0b; --danger: #ef4444; --info: #60a5fa; --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; }
+    a { color: var(--info); text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header { padding: 8px 0 12px; }
+    h1 { font-size: 28px; margin: 0 0 6px; }
+    h2 { font-size: 22px; margin: 22px 0 10px; }
+    h3 { font-size: 18px; margin: 18px 0 8px; color: #cbd5e1; }
+    p { color: var(--muted); line-height: 1.6; }
+    .badge { display: inline-block; font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+    .card { background: linear-gradient(180deg, #0b1220, #0e1627 20%, var(--card)); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-top: 16px; }
+    .list { padding-left: 18px; color: var(--muted); }
+    .list li { margin: 6px 0; }
+    .tip { font-size: 13px; color: var(--muted); border-left: 2px solid var(--info); padding-left: 10px; margin-top: 8px; }
+    .toc { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .toc a { display:block; background:#0b1220; border:1px solid var(--border); border-radius:10px; padding:10px 12px; }
+    .footer { margin-top: 24px; font-size: 12px; color: var(--muted); }
+    .kpi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .kpi .box { background:#0b1220; border:1px solid var(--border); border-radius:10px; padding:10px 12px; }
+    .box h4 { margin:0 0 6px; font-size:14px; color:#cbd5e1; }
+    .box .value { font-size:16px; font-weight:600; }
+    .divider { border-top: 1px solid var(--border); margin: 10px 0; }
+    .callout { background:#0b1220; border:1px solid var(--border); border-radius:10px; padding:12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Restoranlarda Cost Yönetimi — Teknik Belge ve En İyi Uygulamalar</h1>
+      <span class="badge">Satın alma • İşgücü • Sabit giderler • Fire • K/Z • Dashboard</span>
+      <p>Bu belge, restoran işletmelerinde cost yönetiminin teknik çerçevesini ve en doğru yönetim yöntemlerini özetler. Amaç, kârlılığı optimize ederken veri bütünlüğünü, operasyonel denetimi ve sürdürülebilirliği sağlamaktır.</p>
+    </header>
+
+    <section class="card">
+      <h2>İçindekiler</h2>
+      <div class="toc">
+        <a href="#mod-satinalma">1. Satın alma ve tedarikçi yönetimi</a>
+        <a href="#mod-isgucu">2. Personel ve işgücü maliyetleri</a>
+        <a href="#mod-sabitgider">3. Enerji ve sabit giderler</a>
+        <a href="#mod-fire">4. Fire ve israf yönetimi</a>
+        <a href="#mod-karzarar">5. Kâr/Zarar ve menü katkı analizi</a>
+        <a href="#mod-dashboard">6. Dashboard ve raporlama</a>
+        <a href="#entegrasyon">7. Entegrasyon ve veri yönetişimi</a>
+        <a href="#ritim">8. Operasyon ritmi ve kontrol takvimi</a>
+      </div>
+      <p class="tip">Doküman, modüller arası veri akışını esas alır: Reçete → Stok → Satın alma → Fire → Personel → Dashboard.</p>
+    </section>
+
+    <section id="mod-satinalma" class="card">
+      <h2>1. Satın alma ve tedarikçi yönetimi</h2>
+      <h3>Teknik tanım</h3>
+      <p>Satın alma modülü, PAR (min–max stok aralığı) ve ROP (yeniden sipariş noktası) metriklerine göre sipariş önerisi üretir. Tedarikçi kartları; fiyat geçmişi, teslim süresi, uygunsuzluk ve iade kayıtlarıyla izlenir. İrsaliye–fatura eşleştirme, maliyet sapmalarını görünür kılar.</p>
+      <div class="divider"></div>
+      <h3>En doğru yönetim şekli</h3>
+      <ul class="list">
+        <li><strong>PAR/ROP kalibrasyonu:</strong> Talep mevsimselliği ve temin süresine göre periyodik güncelleme.</li>
+        <li><strong>Tedarikçi puanlama:</strong> Fiyat istikrarı, teslim dakikliği, kalite uygunluğu; ağırlıklı skor.</li>
+        <li><strong>Belge kontrolü:</strong> İrsaliye–fatura fark analizi ve onay akışlarıyla maliyet disiplininin korunması.</li>
+      </ul>
+      <div class="callout">
+        <strong>Not:</strong> Taze ürünlerde FEFO (son kullanma tarihi odaklı rotasyon) gereklidir; ROP hesaplarına emniyet stoğu eklenmelidir.
+      </div>
+    </section>
+
+    <section id="mod-isgucu" class="card">
+      <h2>2. Personel ve işgücü maliyetleri</h2>
+      <h3>Teknik tanım</h3>
+      <p>İşgücü maliyeti; saatlik ücret, yan haklar ve vergi kalemlerinin toplamından oluşur. Ürün bazında dakika başı maliyet, reçete hazırlık/pişirme süresi ile çarpılarak maliyete eklenir. Vardiya planları, tahmini satış ve istasyon kapasitesine göre optimize edilir.</p>
+      <div class="divider"></div>
+      <h3>En doğru yönetim şekli</h3>
+      <ul class="list">
+        <li><strong>Standart süreler:</strong> Reçetelere istasyon bazlı hazırlık sürelerini tanımlayın.</li>
+        <li><strong>Kapasite dengeleme:</strong> Pik saatlerde darboğaz oluşturan ürünleri menü konumlandırmasıyla dengeleyin.</li>
+        <li><strong>Takip ve uyarı:</strong> Fazla mesai ve verimsizlik KPI’larını dashboard’da eşiklerle izleyin.</li>
+      </ul>
+    </section>
+
+    <section id="mod-sabitgider" class="card">
+      <h2>3. Enerji ve sabit giderler</h2>
+      <h3>Teknik tanım</h3>
+      <p>Elektrik, su, doğalgaz, kira, bakım gibi sabit giderler dönemsel olarak toplanır; ürünlere satış veya üretim hacmine göre paylaştırılır. Amaç, birim ürün maliyetine gerçek overhead etkisini yansıtmaktır.</p>
+      <div class="divider"></div>
+      <h3>En doğru yönetim şekli</h3>
+      <ul class="list">
+        <li><strong>Dağıtım anahtarı:</strong> Ürün sayısı, süre (dakika), veya satış geliri tabanlı paylaştırma.</li>
+        <li><strong>Enerji verimliliği:</strong> Soğuk zincir, ekipman bakımı ve çalışma saatleri optimizasyonu.</li>
+        <li><strong>KPI izleme:</strong> Sabit gider/toplam satış oranı ve trend analizi.</li>
+      </ul>
+    </section>
+
+    <section id="mod-fire" class="card">
+      <h2>4. Fire ve israf yönetimi</h2>
+      <h3>Teknik tanım</h3>
+      <p>Fire kayıtları; bozulma, porsiyon sapması, yanlış giriş ve müşteri iadesi olarak sınıflanır. Fire oranı, dönem satışına göre yüzde olarak raporlanır ve kök neden analiziyle iyileştirme planları yapılır.</p>
+      <div class="divider"></div>
+      <h3>En doğru yönetim şekli</h3>
+      <ul class="list">
+        <li><strong>Standart kodlar:</strong> Fire nedenlerini kodlayarak analizi tutarlı hale getirin.</li>
+        <li><strong>Eşikler:</strong> ≤%3 iyi, %3–5 uyarı, >%5 risk; aksiyon planını otomatik tetikleyin.</li>
+        <li><strong>SKT stratejisi:</strong> Yaklaşan ürünler için kampanya veya alternatif reçete planlayın.</li>
+      </ul>
+    </section>
+
+    <section id="mod-karzarar" class="card">
+      <h2>5. Kâr/Zarar ve menü katkı analizi</h2>
+      <h3>Teknik tanım</h3>
+      <p>Katkı kârı, satış fiyatından değişken maliyetlerin (reçete + işgücü + paylaştırılmış sabit gider) düşülmesiyle hesaplanır. Menü miks analizi, her ürünün toplam kâra etkisini görünür kılar ve Yıldız/Cash Cow/Puzzle/Dog aksiyonlarını destekler.</p>
+      <div class="divider"></div>
+      <h3>En doğru yönetim şekli</h3>
+      <ul class="list">
+        <li><strong>Yıldızlar:</strong> Görsel ve servis önerileriyle satış hızını koruyun.</li>
+        <li><strong>Puzzle:</strong> Fiyat/gramaj ve tedarik optimizasyonu ile kârlılığı yükseltin.</li>
+        <li><strong>Dog:</strong> Menüyü sadeleştirin; operasyon yükünü azaltın veya yeniden konumlandırın.</li>
+      </ul>
+    </section>
+
+    <section id="mod-dashboard" class="card">
+      <h2>6. Dashboard ve raporlama</h2>
+      <h3>Teknik tanım</h3>
+      <p>Dashboard, temel KPI’ları (brüt kâr marjı, stok devir hızı, fire oranı, işgücü/satış) tek ekranda sunar. Veri POS/ERP’den otomatik beslenir; haftalık ve aylık ritimde güncellenir.</p>
+      <div class="kpi">
+        <div class="box"><h4>Brüt kâr marjı</h4><div class="value">BKM = (Satış − SMM) / Satış</div></div>
+        <div class="box"><h4>Stok devir hızı</h4><div class="value">SDH = SMM / Ortalama stok</div></div>
+        <div class="box"><h4>Fire oranı</h4><div class="value">Fire = Fire maliyeti / Satış</div></div>
+        <div class="box"><h4>İşgücü/Satış</h4><div class="value">İ/S = İşgücü maliyeti / Satış</div></div>
+      </div>
+      <div class="divider"></div>
+      <h3>En doğru yönetim şekli</h3>
+      <ul class="list">
+        <li><strong>Ritim:</strong> Haftalık taktik; aylık stratejik gözden geçirme.</li>
+        <li><strong>Trend ve karşılaştırma:</strong> Yıl içi dönem ve bir önceki yıl karşılaştırmaları.</li>
+        <li><strong>Uyarı eşikleri:</strong> KPI’lara eşik ve bildirim mekanizması ekleyin.</li>
+      </ul>
+    </section>
+
+    <section id="entegrasyon" class="card">
+      <h2>7. Entegrasyon ve veri yönetişimi</h2>
+      <h3>Teknik tanım</h3>
+      <p>Reçete, stok, satış ve satın alma modülleri tek bir veri modeli üzerinde versiyonlanarak yönetilir. Ana veri (malzeme, ürün, tedarikçi) standart kod ve birimlerle tanımlanır; değişiklikler audit trail ile izlenir.</p>
+      <div class="divider"></div>
+      <h3>En doğru yönetim şekli</h3>
+      <ul class="list">
+        <li><strong>Ana veri disiplini:</strong> Birim, gramaj, fire ve istasyon tanımlarını standartlaştırın.</li>
+        <li><strong>Versiyon kontrolü:</strong> Reçete ve fiyat değişimlerini etkili tarih ile yönetin.</li>
+        <li><strong>Yetki ve iz:</strong> Onay akışları, rol bazlı yetki ve işlem logları kullanın.</li>
+      </ul>
+      <div class="callout">
+        <strong>Öneri:</strong> Veri bütünlüğü için tek kaynak prensibi (SSOT) ve düzenli mutabakat (stok, satış, satın alma) uygulanmalıdır.
+      </div>
+    </section>
+
+    <section id="ritim" class="card">
+      <h2>8. Operasyon ritmi ve kontrol takvimi</h2>
+      <h3>Önerilen ritim</h3>
+      <ul class="list">
+        <li><strong>Günlük:</strong> Taze stok kontrolü, SKT uyarıları, kritik fire kayıtları.</li>
+        <li><strong>Haftalık:</strong> PAR/ROP güncellemeleri, menü performansı, işgücü–kapasite dengelemesi.</li>
+        <li><strong>Aylık:</strong> K/Z raporu, KPI trendleri, tedarikçi performansı, menü revizyonu.</li>
+        <li><strong>Sezon başı/sonu:</strong> Talep tahmini, maliyet kalibrasyonu, menü yeniden tasarımı.</li>
+      </ul>
+      <p class="tip">Kontrol ritmi, işletmenin ölçeğine ve menü karmaşıklığına göre uyarlanmalıdır; yoğun dönemlerde haftalık analiz sıklığı artırılır.</p>
+    </section>
+
+    <section class="card">
+      <h2>Sonuç</h2>
+      <p>Cost yönetimi, modüllerin birbirine veri akışıyla bağlandığı entegre bir mimari gerektirir. Doğru reçete ve stok doğruluğu, satın alma disiplini, işgücü optimizasyonu ve düzenli dashboard takibi; sürdürülebilir kârlılığın temelidir. Bu belge, uygulama için teknik çerçeveyi ve en iyi uygulamaları referans olarak sunar.</p>
+    </section>
+
+    <div class="footer">
+      Hazırlayan: Restoran cost yönetimi için teknik rehber. Kararlar için gerçek POS/ERP, reçete, stok ve satın alma verilerini kullanınız.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restoranlar için Reçete Yönetimi</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --muted: #9ca3af;
+      --text: #f8fafc;
+      --accent: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --info: #60a5fa;
+      --border: #1f2937;
+    }
+    body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; }
+    .container { max-width:1100px; margin:0 auto; padding:24px; }
+    h1 { font-size:28px; margin-bottom:8px; }
+    h2 { font-size:22px; margin:20px 0 10px; }
+    p { color:var(--muted); line-height:1.6; }
+    .card { background:linear-gradient(180deg,#0b1220,#0e1627 20%,var(--card)); border:1px solid var(--border); border-radius:14px; padding:18px; margin-bottom:16px; }
+    .list { padding-left:18px; color:var(--muted); }
+    .list li { margin:6px 0; }
+    table { width:100%; border-collapse:collapse; margin-top:12px; }
+    th,td { padding:10px 8px; border-bottom:1px solid var(--border); text-align:left; }
+    th { color:#cbd5e1; }
+    .form-row { display:grid; grid-template-columns:2fr 1fr 1fr auto; gap:8px; margin-top:12px; }
+    .form-row input { padding:10px; border-radius:10px; border:1px solid var(--border); background:#0b1220; color:var(--text); }
+    .btn { padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#0b1220; color:var(--text); cursor:pointer; }
+    .btn-primary { background:var(--info); border-color:#3b82f6; color:#0b1220; font-weight:600; }
+    .tip { font-size:13px; color:var(--muted); border-left:2px solid var(--info); padding-left:10px; margin-top:8px; }
+    .footer { margin-top:24px; font-size:12px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Restoranlar için Reçete Yönetimi</h1>
+    <p>Reçete yönetimi, her menü ürününün standart gramaj, maliyet ve fire oranlarıyla tanımlanmasını sağlayarak maliyet kontrolü ve kalite sürekliliği için kritik bir süreçtir.</p>
+
+    <section class="card">
+      <h2>Reçete yönetiminin temel amaçları</h2>
+      <ul class="list">
+        <li><strong>Standartlaştırma:</strong> Ürünlerin her zaman aynı kalite ve gramajda hazırlanması.</li>
+        <li><strong>Maliyet kontrolü:</strong> Malzeme bazında maliyetlerin hesaplanması ve kâr marjının korunması.</li>
+        <li><strong>Fire yönetimi:</strong> Hazırlık ve pişirme sırasında oluşan kayıpların dikkate alınması.</li>
+        <li><strong>Operasyonel verimlilik:</strong> Mutfağın planlı çalışması ve stok yönetimiyle entegrasyon.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Reçete hesaplama tablosu</h2>
+      <div class="form-row">
+        <input id="malzeme" placeholder="Malzeme adı" />
+        <input id="miktar" type="number" step="0.01" placeholder="Miktar (gr)" />
+        <input id="birimFiyat" type="number" step="0.01" placeholder="Birim fiyat (₺/kg)" />
+        <button class="btn btn-primary" id="ekle">Ekle</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Malzeme</th>
+            <th>Miktar (gr)</th>
+            <th>Birim Fiyat (₺/kg)</th>
+            <th>Maliyet (₺)</th>
+            <th>İşlem</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3">Toplam Maliyet</th>
+            <td id="toplamMaliyet"></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="tip">Maliyet hesaplaması: (Miktar / 1000) × Birim Fiyat</p>
+    </section>
+
+    <section class="card">
+      <h2>Profesyonel öneriler</h2>
+      <ul class="list">
+        <li>Reçeteleri ERP/POS sistemine entegre ederek satış anında otomatik stok düşümü sağlayın.</li>
+        <li>Gramaj toleranslarını belirleyerek porsiyon kontrolünü güvence altına alın.</li>
+        <li>Fire oranlarını reçeteye dahil ederek gerçek maliyetleri görünür hale getirin.</li>
+        <li>Reçete revizyonlarını versiyon kontrolüyle takip edin.</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      Hazırlayan: Restoran reçete yönetimi için örnek sayfa. Kararlar için gerçek stok ve satış verilerini kullanınız.
+    </div>
+  </div>
+
+  <script>
+    const tbody = document.getElementById('tbody');
+    const toplamMaliyetCell = document.getElementById('toplamMaliyet');
+    let data = [];
+
+    function hesapla() {
+      tbody.innerHTML = '';
+      let toplam = 0;
+      data.forEach((d, idx) => {
+        const maliyet = (d.miktar/1000) * d.birimFiyat;
+        toplam += maliyet;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${d.malzeme}</td>
+          <td>${d.miktar}</td>
+          <td>${d.birimFiyat}</td>
+          <td>${maliyet.toFixed(2)}</td>
+          <td><button class="btn" onclick="sil(${idx})">Sil</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      toplamMaliyetCell.textContent = toplam.toFixed(2);
+    }
+
+    function sil(idx) {
+      data.splice(idx,1);
+      hesapla();
+    }
+
+    document.getElementById('ekle').onclick = () => {
+      const malzeme = document.getElementById('malzeme').value.trim();
+      const miktar = parseFloat(document.getElementById('miktar').value);
+      const birimFiyat = parseFloat(document.getElementById('birimFiyat').value);
+      if (!malzeme || isNaN(miktar) || isNaN(birimFiyat)) {
+        alert("Lütfen tüm alanları doldurun.");
+        return;
+      }
+      data.push({ malzeme, miktar, birimFiyat });
+      document.getElementById('malzeme').value = '';
+      document.getElementById('miktar').value = '';
+      document.getElementById('birimFiyat').value = '';
+      hesapla();
+    };
+  </script>
+</body>
+</html>
