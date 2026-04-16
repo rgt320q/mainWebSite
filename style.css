@@ -6,8 +6,9 @@
     --color-accent-secondary: #FF3B30;
     --color-header-background: #F5F5F7;
     --color-header-text: #1A1A1A;
-    --color-footer-background: #1A1A1A;
-    --color-footer-text: #A1A1A6;
+    --color-footer-background: var(--color-background-secondary);
+    --color-footer-text: #1A1A1A;
+    --color-footer-border: rgba(0,0,0,0.06);
     --color-modal-background: rgba(0,0,0,0.8);
     --color-modal-content-background: #FFFFFF;
     --color-shadow: rgba(0,0,0,0.1);
@@ -20,7 +21,9 @@
     --color-background-secondary: #2C2C2E;
     --color-header-background: #1A1A1A;
     --color-header-text: #FFFFFF;
+    --color-footer-background: #1A1A1A;
     --color-footer-text: #8E8E93;
+    --color-footer-border: rgba(255,255,255,0.1);
     --color-modal-content-background: #2C2C2E;
     --color-shadow: rgba(255,255,255,0.2);
     --logo-filter: brightness(0) invert(1);
@@ -488,7 +491,7 @@ footer {
 }
 
 footer .container {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--color-footer-border);
     padding-top: 30px;
 }
 
