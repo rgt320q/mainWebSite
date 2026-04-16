@@ -1,4 +1,4 @@
-CoinMatchMaster — Gizlilik Politikası (Google Play Uyumlu)
+Gizlilik Politikası
 
 Son güncelleme: 16 Nisan 2026
 

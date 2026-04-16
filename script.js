@@ -42,7 +42,14 @@ const translations = {
         footer_terms: "Kullanım Şartları",
         footer_legal: "Yasal",
         footer_sitemap: "Site Haritası",
-        footer_copyright: "© 2025 mrCetin Studios. Tüm Hakları Saklıdır.",
+        footer_copyright: "© 2026 mrCetin Studios. Tüm Hakları Saklıdır.",
+        nav_home: "Ana Sayfa",
+        logo_alt: "mrCetin Software Logosu",
+        back_to_home: "Ana Sayfaya Dön",
+        privacy_policy_last_updated: "Son güncelleme: 16 Nisan 2026",
+        request_form_hero_title: "Talep Formu",
+        request_form_hero_desc: "İhtiyaç, iş birliği veya destek taleplerinizi bize iletebilirsiniz.",
+        request_form_button: "Talep Formuna Git",
         privacy_policy_title: "Gizlilik Politikası",
         privacy_policy_text: "Bu gizlilik politikası, mrCetin Studios'in kişisel verilerinizi nasıl topladığını, kullandığını, ifşa ettiğini ve koruduğunu açıklar. Hizmetlerimizi kullanarak, bu politikada açıklanan uygulamaları kabul etmiş olursunuz. Veri güvenliğiniz bizim için önemlidir ve verilerinizi korumak için gerekli tüm önlemleri alıyoruz. Topladığımız veriler, hizmetlerimizi iyileştirmek, size daha iyi bir deneyim sunmak ve yasal yükümlülüklerimizi yerine getirmek amacıyla kullanılır. Verilerinizi üçüncü taraflarla izniniz olmadan paylaşmayız, ancak yasal gereklilikler veya hizmet sağlayıcılarımızla işbirliği durumları istisna teşkil edebilir. Gizlilik haklarınızla ilgili daha fazla bilgi için lütfen bizimle iletişime geçin.",
         cookie_policy_title: "Çerezlerin Kullanımı",
@@ -95,9 +102,148 @@ const translations = {
         footer_terms: "Terms of Use",
         footer_legal: "Legal",
         footer_sitemap: "Sitemap",
-        footer_copyright: "© 2025 mrCetin Studios. All Rights Reserved.",
+        footer_copyright: "© 2026 mrCetin Studios. All Rights Reserved.",
+        nav_home: "Home",
+        logo_alt: "mrCetin Software Logo",
+        back_to_home: "Back to Home",
+        privacy_policy_last_updated: "Last updated: April 16, 2026",
+        request_form_hero_title: "Request Form",
+        request_form_hero_desc: "You can submit requests for needs, collaboration, or support.",
+        request_form_button: "Go to Request Form",
         privacy_policy_title: "Privacy Policy",
         privacy_policy_text: "This privacy policy explains how mrCetin Studios collects, uses, discloses, and protects your personal data. By using our services, you agree to the practices described in this policy. Your data security is important to us, and we take all necessary measures to protect your data. The data we collect is used to improve our services, provide you with a better experience, and fulfill our legal obligations. We do not share your data with third parties without your consent, but legal requirements or collaborations with our service providers may constitute exceptions. Please contact us for more information about your privacy rights.",
+        privacy_policy_html: `<p>This privacy policy has been prepared by "mrCetin Studios" to explain how the CoinMatchMaster application (hereinafter "the application" or "we") collects, processes, stores, and shares user data. The information below is provided to comply with Google Play Store disclosure requirements and to inform users about their rights and choices.</p>
+
+    <h2>1. Data Controller</h2>
+    <p>CoinMatchMaster and "mrCetin Studios" are the data controller for the purposes of personal data processing.</p>
+    <ul>
+    <li><strong>Website:</strong> <a href="http://www.mrcetin.com">www.mrcetin.com</a></li>
+    <li><strong>Contact:</strong> <a href="mailto:info@mrcetin.com">info@mrcetin.com</a></li>
+    </ul>
+
+    <h2>2. What Data is Collected?</h2>
+    <p>The application may collect the following categories of data to provide and improve the services (including the Android Advertising ID where applicable):</p>
+    <ul>
+    <li><strong>Account and identity data:</strong> email address (via Firebase Authentication), user UID, profile information (display name/nickname, full name, avatar, language preference).</li>
+    <li><strong>Game and performance data:</strong> scores, XP, level, wins/losses/draws, play durations, match records, move counts, earned badges/achievements.</li>
+    <li><strong>Social interaction data:</strong> in-game chat messages, private messages (one-to-one messaging), friends lists, blocked users list, user reports and moderation/disciplinary records.</li>
+    <li><strong>Session and technical data:</strong> sessionId, login/logout timestamps, device/browser information, IP address, connection/presence status.</li>
+    <li><strong>Notification data:</strong> device push tokens (FCM tokens), notification permission status and platform metadata.</li>
+    <li><strong>Analytics and usage data:</strong> screen view events, button clicks, game start/end events, error and performance logs.</li>
+    <li><strong>In-app storage:</strong> user preferences stored in localStorage/sessionStorage such as sound settings, theme selection and temporary session data.</li>
+    </ul>
+
+    <h2>3. How Data is Collected</h2>
+    <p>Data is collected:</p>
+    <ul>
+    <li>When provided directly by the user (registration forms, profile edits),</li>
+    <li>Automatically through app usage and events (analytics, error reporting, game events),</li>
+    <li>Via Firebase infrastructure and application servers (Realtime Database, Cloud Functions, Authentication, Cloud Messaging, Analytics).</li>
+    </ul>
+
+    <h2>4. Purposes of Collection and Processing</h2>
+    <p>The collected data is processed for the following purposes:</p>
+    <ul>
+    <li>Account creation, authentication and session management,</li>
+    <li>Multiplayer gameplay, matchmaking and real-time data synchronization,</li>
+    <li>Providing profile, statistics, friends and messaging features,</li>
+    <li>Security, moderation, profanity filtering and abuse detection,</li>
+    <li>Error analysis, performance improvement and user experience optimization,</li>
+    <li>Sending push notifications with user consent where applicable.</li>
+    </ul>
+
+    <h2>5. Third Parties and Data Sharing</h2>
+    <p>Data is shared only as necessary and for the purposes described above. Major third parties include:</p>
+    <ul>
+    <li><strong>Google / Firebase services:</strong> Your data may be processed by these services and stored or transferred by Google's service providers.</li>
+    <li><strong>Email delivery:</strong> SMTP provider (e.g., sending via Gmail/nodemailer) — email addresses may be used for sending messages.</li>
+    </ul>
+    <div class="card-note"><p><strong>Important:</strong> The application currently does not display advertisements and does not share user data for targeted advertising. If this changes users will be notified.</p></div>
+
+    <h2>6. Data Transfers and International Processing</h2>
+    <p>Firebase and Google services operate on international infrastructure; accordingly personal data may be transferred outside Turkey and processed in other countries. Transfers are conducted with appropriate technical and administrative safeguards in accordance with applicable law.</p>
+
+    <h2>7. Data Retention Periods</h2>
+    <p>Data is retained only as long as necessary for the processing purposes. General rules:</p>
+    <ul>
+    <li><strong>Account data:</strong> may be retained while the account is active;</li>
+    <li><strong>Messaging and moderation records:</strong> may be retained for longer periods for safety and legal compliance;</li>
+    <li><strong>Analytics data:</strong> may be retained in anonymized form for long-term analysis.</li>
+    </ul>
+
+    <h2>8. Data Deletion and User Options</h2>
+    <p>The app provides users with two main data control options:</p>
+    <ol>
+    <li><strong>“Reset all my data”:</strong> Profile is retained but game history and statistics are permanently cleared.</li>
+    <li><strong>“Delete my account and all my data”:</strong> This action is irreversible and permanently removes all data from the system.</li>
+    </ol>
+    <p>Users may also submit deletion requests via <a href="requestform.html">www.mrcetin.com/requestform</a>.</p>
+
+    <h2>9. Security Measures and Data Encryption</h2>
+    <p>We apply industry-standard technical and administrative measures to ensure data security:</p>
+    <ul>
+    <li><strong>Encryption in transit:</strong> All data traffic is protected by TLS using HTTPS and WSS protocols.</li>
+    <li><strong>Access controls:</strong> Firebase Security Rules ensure that only authorized access is permitted.</li>
+    <li><strong>Secure hosting:</strong> The application is served over SSL-secured connections.</li>
+    <li><strong>Server-side security:</strong> Critical operations are monitored and enforced via secure Cloud Functions.</li>
+    </ul>`,
+        request_form_html: `<div class="form-card">
+                        <h2>Request Form</h2>
+                        <p class="tip">Please provide your contact information and details of your request.</p>
+                        <form id="request-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" name="name" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="company">Company</label>
+                                    <input type="text" id="company" name="company" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id="phone" name="phone" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="type">Request Type</label>
+                                    <select id="type" name="type">
+                                        <option>General</option>
+                                        <option>Collaboration</option>
+                                        <option>Technical Support</option>
+                                        <option>Press/Media</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" />
+                                </div>
+                            </div>
+
+                            <div style="margin-top:12px;">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+
+                            <div class="consents">
+                                <label for="consent" class="consent-label">I have read and accept the privacy policy *</label>
+                                <input type="checkbox" id="consent" name="consent" required />
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn">Send</button>
+                                <button type="reset" class="btn btn-secondary">Clear</button>
+                            </div>
+                        </form>
+
+                        <div id="form-success" class="card-note success" style="display:none; opacity:0; transition:opacity .3s; margin-top:12px;">
+                            <p><strong>Thank you.</strong> Your request was saved locally and an email has been prepared. We will respond as soon as possible.</p>
+                        </div>
+                    </div>`,
         cookie_policy_title: "Use of Cookies",
         cookie_policy_text: "Our website uses cookies to improve your user experience and analyze our services. Cookies are small text files stored on your computer by your browser. These cookies help us remember your preferences, analyze site traffic, and provide you with personalized content. You can control and delete cookies at any time through your browser settings. However, please note that some features of our website may not function properly if you disable cookies. For more information, you can review our cookie policy.",
         terms_of_use_title: "Terms of Use",
@@ -148,7 +294,14 @@ const translations = {
         footer_terms: "Nutzungsbedingungen",
         footer_legal: "Rechtliches",
         footer_sitemap: "Sitemap",
-        footer_copyright: "© 2025 mrCetin Studios. Alle Rechte vorbehalten.",
+        footer_copyright: "© 2026 mrCetin Studios. Alle Rechte vorbehalten.",
+        nav_home: "Startseite",
+        logo_alt: "mrCetin Software-Logo",
+        back_to_home: "Zurück zur Startseite",
+        privacy_policy_last_updated: "Zuletzt aktualisiert: 16. April 2026",
+        request_form_hero_title: "Anfrageformular",
+        request_form_hero_desc: "Sie können uns Anfragen zu Bedarf, Zusammenarbeit oder Support senden.",
+        request_form_button: "Zum Anfrageformular",
         privacy_policy_title: "Datenschutzrichtlinie",
         privacy_policy_text: "Diese Datenschutzrichtlinie erklärt, wie mrCetin Studios Ihre persönlichen Daten sammelt, verwendet, offenlegt und schützt. Durch die Nutzung unserer Dienste stimmen Sie den in dieser Richtlinie beschriebenen Praktiken zu. Die Sicherheit Ihrer Daten ist uns wichtig und wir ergreifen alle notwendigen Maßnahmen, um Ihre Daten zu schützen. Die von uns gesammelten Daten werden verwendet, um unsere Dienste zu verbessern, Ihnen ein besseres Erlebnis zu bieten und unseren gesetzlichen Verpflichtungen nachzukommen. Wir geben Ihre Daten ohne Ihre Zustimmung nicht an Dritte weiter, es sei denn, dies ist gesetzlich vorgeschrieben oder erfolgt in Zusammenarbeit mit unseren Dienstleistern. Für weitere Informationen zu Ihren Datenschutzrechten kontaktieren Sie uns bitte.",
         cookie_policy_title: "Verwendung von Cookies",
@@ -201,7 +354,14 @@ const translations = {
         footer_terms: "Términos de Uso",
         footer_legal: "Legal",
         footer_sitemap: "Mapa del Sitio",
-        footer_copyright: "© 2025 mrCetin Studios. Todos los derechos reservados.",
+        footer_copyright: "© 2026 mrCetin Studios. Todos los derechos reservados.",
+        nav_home: "Inicio",
+        logo_alt: "Logotipo de mrCetin Software",
+        back_to_home: "Volver al inicio",
+        privacy_policy_last_updated: "Última actualización: 16 de abril de 2026",
+        request_form_hero_title: "Formulario de solicitud",
+        request_form_hero_desc: "Puede enviarnos solicitudes de necesidades, colaboración o soporte.",
+        request_form_button: "Ir al formulario",
         privacy_policy_title: "Política de Privacidad",
         privacy_policy_text: "Esta política de privacidad explica cómo mrCetin Tech recopila, utiliza, divulga y protege su información personal. Al utilizar nuestros servicios, usted acepta las prácticas descritas en esta política. Su seguridad de datos es importante para nosotros y tomamos todas las precauciones necesarias para proteger sus datos. Los datos que recopilamos se utilizan para mejorar nuestros servicios, brindarle una mejor experiencia y cumplir con nuestras obligaciones legales. No compartiremos sus datos con terceros sin su consentimiento, pero los requisitos legales o la colaboración con nuestros proveedores de servicios pueden ser una excepción. Para obtener más información sobre sus derechos de privacidad, contáctenos.",
         cookie_policy_title: "Uso de Cookies",
@@ -254,7 +414,14 @@ const translations = {
         footer_terms: "Условия использования",
         footer_legal: "Юридическая информация",
         footer_sitemap: "Карта сайта",
-        footer_copyright: "© 2025 mrCetin Tech. Все права защищены.",
+        footer_copyright: "© 2026 mrCetin Tech. Все права защищены.",
+        nav_home: "Главная",
+        logo_alt: "Логотип mrCetin Software",
+        back_to_home: "На главную",
+        privacy_policy_last_updated: "Обновлено: 16 апреля 2026 г.",
+        request_form_hero_title: "Форма запроса",
+        request_form_hero_desc: "Вы можете отправить нам запросы по потребностям, сотрудничеству или поддержке.",
+        request_form_button: "Перейти к форме",
         privacy_policy_title: "Политика конфиденциальности",
         privacy_policy_text: "Эта политика конфиденциальности объясняет, как mrCetin Tech собирает, использует, раскрывает и защищает ваши личные данные. Используя наши услуги, вы соглашаетесь с практиками, описанными в этой политике. Безопасность ваших данных важна для нас, и мы принимаем все необходимые меры для их защиты. Собираемые нами данные используются для улучшения наших услуг, предоставления вам лучшего опыта и выполнения наших юридических обязательств. Мы не передаем ваши данные третьим лицам без вашего согласия, за исключением случаев, предусмотренных законом, или сотрудничества с нашими поставщиками услуг. Для получения дополнительной информации о ваших правах на конфиденциальность, пожалуйста, свяжитесь с нами.",
         cookie_policy_title: "Использование файлов cookie",
@@ -307,7 +474,14 @@ const translations = {
         footer_terms: "利用規約",
         footer_legal: "法的",
         footer_sitemap: "サイトマップ",
-        footer_copyright: "© 2025 mrCetin Tech. 全著作権所有。",
+        footer_copyright: "© 2026 mrCetin Tech. 全著作権所有。",
+        nav_home: "ホーム",
+        logo_alt: "mrCetin ソフトウェアのロゴ",
+        back_to_home: "ホームに戻る",
+        privacy_policy_last_updated: "最終更新日: 2026年4月16日",
+        request_form_hero_title: "リクエストフォーム",
+        request_form_hero_desc: "ご要望、協力、サポートのリクエストを送信できます。",
+        request_form_button: "申請フォームへ",
         privacy_policy_title: "プライバシーポリシー",
         privacy_policy_text: "このプライバシーポリシーは、mrCetin Techがお客様の個人データをどのように収集、使用、開示、保護するかを説明します。当社のサービスを利用することにより、お客様はこのポリシーに記載されている慣行に同意したものとみなされます。お客様のデータセキュリティは当社にとって重要であり、当社はお客様のデータを保護するために必要なすべての措置を講じています。当社が収集するデータは、サービスの改善、より良い体験の提供、および法的義務の履行のために使用されます。当社は、お客様の同意なしに第三者とデータを共有することはありませんが、法的要件またはサービスプロバイダーとの協力の場合は例外となることがあります。プライバシー権に関する詳細については、当社までお問い合わせください。",
         cookie_policy_title: "クッキーの使用",
@@ -360,7 +534,14 @@ const translations = {
         footer_terms: "使用条款",
         footer_legal: "法律",
         footer_sitemap: "网站地图",
-        footer_copyright: "© 2025 mrCetin Tech. 保留所有权利。",
+        footer_copyright: "© 2026 mrCetin Tech. 保留所有权利。",
+        nav_home: "首页",
+        logo_alt: "mrCetin 软件标志",
+        back_to_home: "返回首页",
+        privacy_policy_last_updated: "最后更新：2026年4月16日",
+        request_form_hero_title: "请求表单",
+        request_form_hero_desc: "您可以提交需求、合作或支持请求。",
+        request_form_button: "前往请求表单",
         privacy_policy_title: "隐私政策",
         privacy_policy_text: "本隐私政策解释了 mrCetin Tech 如何收集、使用、披露和保护您的个人数据。使用我们的服务即表示您同意本政策中描述的做法。您的数据安全对我们很重要，我们采取一切必要措施保护您的数据。我们收集的数据用于改进我们的服务，为您提供更好的体验，并履行我们的法律义务。未经您的同意，我们不会与第三方共享您的数据，但法律要求或与我们的服务提供商合作的情况除外。有关您的隐私权的更多信息，请联系我们。",
         cookie_policy_title: "Cookie 使用",
@@ -413,7 +594,14 @@ const translations = {
         footer_terms: "이용약관",
         footer_legal: "법률",
         footer_sitemap: "사이트맵",
-        footer_copyright: "© 2025 mrCetin Tech. 모든 권리 보유.",
+        footer_copyright: "© 2026 mrCetin Tech. 모든 권리 보유.",
+        nav_home: "홈",
+        logo_alt: "mrCetin 소프트웨어 로고",
+        back_to_home: "홈으로 돌아가기",
+        privacy_policy_last_updated: "최종 업데이트: 2026년 4월 16일",
+        request_form_hero_title: "요청 양식",
+        request_form_hero_desc: "요청, 협업 또는 지원 요청을 제출할 수 있습니다.",
+        request_form_button: "요청 양식으로 이동",
         privacy_policy_title: "개인정보처리방침",
         privacy_policy_text: "이 개인정보 처리방침은 mrCetin Tech가 귀하의 개인 데이터를 수집, 사용, 공개 및 보호하는 방법을 설명합니다. 당사 서비스를 이용함으로써 귀하는 본 정책에 설명된 관행에 동의하는 것입니다. 데이터 보안은 당사에 중요하며, 당사는 귀하의 데이터를 보호하기 위해 필요한 모든 조치를 취합니다. 당사가 수집하는 데이터는 서비스 개선, 더 나은 경험 제공 및 법적 의무 이행을 위해 사용됩니다. 당사는 귀하의 동의 없이 제3자와 귀하의 데이터를 공유하지 않지만, 법적 요구 사항 또는 서비스 제공업체와의 협력은 예외가 될 수 있습니다. 개인정보 보호 권리에 대한 자세한 내용은 당사에 문의하십시오.",
         cookie_policy_title: "쿠키 사용",
@@ -465,7 +653,14 @@ const translations = {
         footer_terms: "شروط الاستخدام",
         footer_legal: "قانوني",
         footer_sitemap: "خريطة الموقع",
-        footer_copyright: "© 2025 mrCetin Tech. جميع الحقوق محفوظة.",
+        footer_copyright: "© 2026 mrCetin Tech. جميع الحقوق محفوظة.",
+        nav_home: "الرئيسية",
+        logo_alt: "شعار mrCetin Software",
+        back_to_home: "العودة إلى الصفحة الرئيسية",
+        privacy_policy_last_updated: "آخر تحديث: 16 أبريل 2026",
+        request_form_hero_title: "نموذج الطلب",
+        request_form_hero_desc: "يمكنك إرسال طلبات الاحتياجات أو التعاون أو الدعم إلينا.",
+        request_form_button: "اذهب إلى نموذج الطلب",
         privacy_policy_title: "سياسة الخصوصية",
         privacy_policy_text: "توضح سياسة الخصوصية هذه كيفية قيام mrCetin Tech بجمع بياناتك الشخصية واستخدامها والكشف عنها وحمايتها. باستخدام خدماتنا، فإنك توافق على الممارسات الموضحة في هذه السياسة. أمان بياناتك مهم بالنسبة لنا، ونتخذ جميع الإجراءات اللازمة لحماية بياناتك. تُستخدم البيانات التي نجمعها لتحسين خدماتنا، وتزويدك بتجربة أفضل، والوفاء بالتزاماتنا القانونية. لا نشارك بياناتك مع أطراف ثالثة دون موافقتك، ولكن المتطلبات القانونية أو التعاون مع مزودي الخدمة لدينا قد يشكل استثناءً. لمزيد من المعلومات حول حقوق الخصوصية الخاصة بك، يرجى الاتصال بنا.",
         cookie_policy_title: "استخدام ملفات تعريف الارتباط",
@@ -518,7 +713,14 @@ const translations = {
         footer_terms: "Conditions d'utilisation",
         footer_legal: "Légal",
         footer_sitemap: "Plan du site",
-        footer_copyright: "© 2025 mrCetin Tech. Tous droits réservés.",
+        footer_copyright: "© 2026 mrCetin Tech. Tous droits réservés.",
+        nav_home: "Accueil",
+        logo_alt: "Logo mrCetin Software",
+        back_to_home: "Retour à l'accueil",
+        privacy_policy_last_updated: "Dernière mise à jour : 16 avril 2026",
+        request_form_hero_title: "Formulaire de demande",
+        request_form_hero_desc: "Vous pouvez nous envoyer des demandes de besoins, de collaboration ou d'assistance.",
+        request_form_button: "Aller au formulaire",
         privacy_policy_title: "Politique de confidentialité",
         privacy_policy_text: "Cette politique de confidentialité explique comment mrCetin Tech collecte, utilise, divulgue et protège vos données personnelles. En utilisant nos services, vous acceptez les pratiques décrites dans cette politique. La sécurité de vos données est importante pour nous, et nous prenons toutes les mesures nécessaires pour protéger vos données. Les données que nous collectons sont utilisées pour améliorer nos services, vous offrir une meilleure expérience et remplir nos obligations légales. Nous ne partageons pas vos données avec des tiers sans votre consentement, mais les exigences légales ou les collaborations avec nos fournisseurs de services peuvent constituer une exception. Pour plus d'informations sur vos droits en matière de confidentialité, veuillez nous contacter.",
         cookie_policy_title: "Utilisation des cookies",
@@ -571,7 +773,14 @@ const translations = {
         footer_terms: "Condizioni d'uso",
         footer_legal: "Legale",
         footer_sitemap: "Mappa del sito",
-        footer_copyright: "© 2025 mrCetin Tech. Tutti i diritti riservati.",
+        footer_copyright: "© 2026 mrCetin Tech. Tutti i diritti riservati.",
+        nav_home: "Home",
+        logo_alt: "Logo mrCetin Software",
+        back_to_home: "Torna alla Home",
+        privacy_policy_last_updated: "Ultimo aggiornamento: 16 aprile 2026",
+        request_form_hero_title: "Modulo di richiesta",
+        request_form_hero_desc: "Puoi inviarci richieste per esigenze, collaborazione o supporto.",
+        request_form_button: "Vai al modulo",
         privacy_policy_title: "Politica sulla privacy",
         privacy_policy_text: "Questa politica sulla privacy spiega come mrCetin Tech raccoglie, utilizza, divulga e protegge i tuoi dati personali. Utilizzando i nostri servizi, accetti le pratiche descritte in questa politica. La sicurezza dei tuoi dati è importante per noi e adottiamo tutte le misure necessarie per proteggere i tuoi dati. I dati che raccogliamo vengono utilizzati per migliorare i nostri servizi, offrirti un'esperienza migliore e adempiere ai nostri obblighi legali. Non condividiamo i tuoi dati con terze parti senza il tuo consenso, ma i requisiti legali o le collaborazioni con i nostri fornitori di servizi possono costituire un'eccezione. Per ulteriori informazioni sui tuoi diritti sulla privacy, ti preghiamo di contattarci.",
         cookie_policy_title: "Uso dei cookie",
@@ -596,8 +805,61 @@ function setLanguage(lang) {
             }
         }
     });
+    // Update alt attributes for images with data-i18n-alt
+    document.querySelectorAll('[data-i18n-alt]').forEach(element => {
+        const keyAlt = element.getAttribute('data-i18n-alt');
+        if (translations[lang] && translations[lang][keyAlt]) {
+            element.alt = translations[lang][keyAlt];
+        }
+    });
     // Update the lang attribute of the html tag
     document.documentElement.lang = lang;
+
+    // Special handling for the full privacy policy page content.
+    // If the page contains a #privacy-body element, preserve the original Turkish HTML
+    // and replace it with a localized detailed HTML if available; otherwise use the summary text.
+    const privacyBody = document.getElementById('privacy-body');
+    if (privacyBody) {
+        if (!privacyBody.dataset.origHtml) {
+            privacyBody.dataset.origHtml = privacyBody.innerHTML;
+        }
+
+        if (lang === 'tr') {
+            privacyBody.innerHTML = privacyBody.dataset.origHtml;
+        } else if (translations[lang] && translations[lang].privacy_policy_html) {
+            // Insert trusted HTML translations maintained in the repo
+            privacyBody.innerHTML = translations[lang].privacy_policy_html;
+        } else {
+            const trans = translations[lang] && translations[lang].privacy_policy_text;
+            const fallback = translations['en'] && translations['en'].privacy_policy_text;
+            const contentText = trans || fallback || '';
+            const p = document.createElement('p');
+            p.textContent = contentText;
+            privacyBody.innerHTML = '';
+            privacyBody.appendChild(p);
+        }
+    }
+
+    // Special handling for the request form page content.
+    const requestBody = document.getElementById('request-form-body');
+    if (requestBody) {
+        if (!requestBody.dataset.origHtml) {
+            requestBody.dataset.origHtml = requestBody.innerHTML;
+        }
+
+        if (lang === 'tr') {
+            requestBody.innerHTML = requestBody.dataset.origHtml;
+        } else if (translations[lang] && translations[lang].request_form_html) {
+            requestBody.innerHTML = translations[lang].request_form_html;
+        } else {
+            requestBody.innerHTML = requestBody.dataset.origHtml;
+        }
+    }
+
+    // Reinitialize request form behaviors if available
+    if (typeof initRequestForm === 'function') {
+        try { initRequestForm(); } catch (e) { console.warn('initRequestForm error', e); }
+    }
 }
 
 function openModal(modalId) {
@@ -614,6 +876,94 @@ function closeModal(modalId) {
         modal.style.display = 'none';
         document.body.style.overflow = ''; // Sayfayı kaydırmayı tekrar etkinleştir
     }
+}
+
+// Initialize request form behaviors (idempotent per-form instance)
+function initRequestForm() {
+    const form = document.getElementById('request-form');
+    if (!form) return;
+    if (form.dataset.inited === 'true') return;
+    form.dataset.inited = 'true';
+
+    const successCard = document.getElementById('form-success');
+
+    function showSuccess() {
+        if (!successCard) return;
+        const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'tr';
+        const msgs = {
+            tr: { title: 'Teşekkürler.', text: 'Talebiniz yerel olarak kaydedildi ve e-posta oluşturuldu. En kısa sürede dönüş yapılacaktır.' },
+            en: { title: 'Thank you.', text: 'Your request was saved locally and an email has been prepared. We will respond as soon as possible.' }
+        };
+        const m = msgs[lang] || msgs['tr'];
+        successCard.innerHTML = `<p><strong>${m.title}</strong> ${m.text}</p>`;
+        successCard.style.display = 'block';
+        setTimeout(() => { successCard.style.opacity = 1; }, 10);
+        setTimeout(() => { successCard.style.opacity = 0; setTimeout(()=> successCard.style.display='none', 300); }, 8000);
+    }
+
+    // Disable submit until consent is checked
+    const consentCheckbox = form.querySelector('[name="consent"]');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn && consentCheckbox) {
+        submitBtn.disabled = !consentCheckbox.checked;
+        consentCheckbox.addEventListener('change', () => {
+            submitBtn.disabled = !consentCheckbox.checked;
+        });
+        form.addEventListener('reset', () => {
+            setTimeout(() => { submitBtn.disabled = true; }, 0);
+        });
+    }
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const data = Object.fromEntries(fd.entries());
+        const consent = form.querySelector('[name="consent"]') && form.querySelector('[name="consent"]').checked;
+        const lang = document.documentElement.lang || localStorage.getItem('selectedLanguage') || 'tr';
+
+        const messages = {
+            tr: {
+                alertFill: 'Lütfen zorunlu alanları doldurun ve gizlilik politikasını kabul edin.',
+                newRequest: 'Yeni Talep',
+                general: 'Genel',
+                labels: { name: 'İsim', company: 'Şirket', email: 'E-posta', phone: 'Telefon', type: 'Talep Türü', message: 'Mesaj' }
+            },
+            en: {
+                alertFill: 'Please fill the required fields and accept the privacy policy.',
+                newRequest: 'New Request',
+                general: 'General',
+                labels: { name: 'Name', company: 'Company', email: 'Email', phone: 'Phone', type: 'Request Type', message: 'Message' }
+            }
+        };
+        const msg = messages[lang] || messages['tr'];
+
+        if (!data.name || !data.email || !data.message || !consent) {
+            alert(msg.alertFill);
+            return;
+        }
+
+        // Save locally
+        try {
+            const requests = JSON.parse(localStorage.getItem('requests') || '[]');
+            requests.push({ ...data, date: new Date().toISOString() });
+            localStorage.setItem('requests', JSON.stringify(requests));
+        } catch (err) {
+            console.warn('localStorage error', err);
+        }
+
+        const subj = data.subject || msg.newRequest;
+        const type = data.type || msg.general;
+        const subject = encodeURIComponent(`${subj} - ${type}`);
+        const bodyText = `${msg.labels.name}: ${data.name}\n${msg.labels.company}: ${data.company || ''}\n${msg.labels.email}: ${data.email}\n${msg.labels.phone}: ${data.phone || ''}\n${msg.labels.type}: ${data.type || ''}\n\n${msg.labels.message}:\n${data.message}`;
+        const mailto = `mailto:info@mrcetin.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+
+        // Open mail client
+        window.location.href = mailto;
+
+        // Show success and reset
+        showSuccess();
+        form.reset();
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
