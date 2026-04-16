@@ -113,54 +113,54 @@
                 <div id="request-form-body">
                     <div class="form-card">
                         <h2>Talep Formu</h2>
-                        <p class="tip">Lütfen iletişim bilgilerinizi ve talebinizi ayrıntılı şekilde giriniz.</p>
+                        <p class="tip" data-i18n="request_form_tip">Lütfen iletişim bilgilerinizi ve talebinizi ayrıntılı şekilde giriniz.</p>
                         <form id="request-form">
                             <div class="form-grid">
                                 <div class="form-group">
-                                    <label for="name">Ad Soyad *</label>
+                                    <label for="name" data-i18n="form_label_name">Ad Soyad *</label>
                                     <input type="text" id="name" name="name" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="company">Şirket</label>
+                                    <label for="company" data-i18n="form_label_company">Şirket</label>
                                     <input type="text" id="company" name="company" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">E-posta *</label>
+                                    <label for="email" data-i18n="form_label_email">E-posta *</label>
                                     <input type="email" id="email" name="email" required />
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">Telefon</label>
+                                    <label for="phone" data-i18n="form_label_phone">Telefon</label>
                                     <input type="tel" id="phone" name="phone" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="type">Talep Türü</label>
+                                    <label for="type" data-i18n="form_label_type">Talep Türü</label>
                                     <select id="type" name="type">
-                                        <option>Genel</option>
-                                        <option>İş Birliği</option>
-                                        <option>Teknik Destek</option>
-                                        <option>Basın/Medya</option>
-                                        <option>Diğer</option>
+                                        <option value="general" data-i18n="type_option_general">Genel</option>
+                                        <option value="collaboration" data-i18n="type_option_collaboration">İş Birliği</option>
+                                        <option value="support" data-i18n="type_option_support">Teknik Destek</option>
+                                        <option value="press" data-i18n="type_option_press">Basın/Medya</option>
+                                        <option value="other" data-i18n="type_option_other">Diğer</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="subject">Konu</label>
+                                    <label for="subject" data-i18n="form_label_subject">Konu</label>
                                     <input type="text" id="subject" name="subject" />
                                 </div>
                             </div>
 
                             <div style="margin-top:12px;">
-                                <label for="message">Mesaj *</label>
+                                <label for="message" data-i18n="form_label_message">Mesaj *</label>
                                 <textarea id="message" name="message" required></textarea>
                             </div>
 
                             <div class="consents">
-                                <label for="consent" class="consent-label">Gizlilik politikasını okudum ve kabul ediyorum *</label>
+                                <label for="consent" class="consent-label" data-i18n="form_consent_label">Gizlilik politikasını okudum ve kabul ediyorum *</label>
                                 <input type="checkbox" id="consent" name="consent" required />
                             </div>
 
                             <div class="form-actions">
-                                <button type="submit" class="btn">Gönder</button>
-                                <button type="reset" class="btn btn-secondary">Temizle</button>
+                                <button type="submit" class="btn" data-i18n="form_button_send">Gönder</button>
+                                <button type="reset" class="btn btn-secondary" data-i18n="form_button_reset">Temizle</button>
                             </div>
                         </form>
 
